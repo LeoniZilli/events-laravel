@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
+/* CSS General */
+
+* {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+h1 {
+    color: #dc3545;
+    font-weight: bolder;
+    font-size: 50px !important;
+    text-align: center;
+    width: 100%;
+    text-shadow: 1px 1px 2px #333
+}
+
+
+
+/* CSS main.blade.php*/
+
+body {
+    min-height: calc(100vh - 25rem);
+    padding-top: 4.5rem;
+}
+
+main {
+    min-height: calc(100vh - 102px) !important;
+}
+
+@media (max-width: 991px) {
+    body {
+        padding-top: 10rem;
+    }
+
+    #event-create-container {
+        min-width: 80%;
+    }
+}
+
+footer {
+    display: flex !important;
+    height: 30px;
+}
+
+footer>p {
+    font-size: 15px;
+    margin: auto !important;
+}
+
+
+
+/* CSS welcome.blade.php*/
+
+.event-content {
+    width: 98%;
+}
+
+.event-sub {
+    font-weight: bolder;
+    font-size: 28px !important;
+    margin-bottom: 10px !important;
+}
+
+.event-background-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: #4d5157;
+    background-blend-mode: overlay;
+}
+
+.next-events {
+    color: #313437;
+    background-color: #e8e8e8;
+    padding: 10px 0 10px 0;
+}
+
+.event-div {
+    margin: 15px auto 15px auto;
+    max-width: 800px !important;
+}
+
+.event-div>h2 {
+    font-weight: bolder;
+    font-size: 30px !important;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px !important;
+}
+
+.event-description {
+    text-align: center;
+    padding: 15px;
+}
+
+.widget-49-date-primary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #313437;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+
+.widget-49-date-day {
+    color: white;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.widget-49-date-month {
+    color: white;
+    line-height: 1;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.card {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    z-index: 0;
+
+}
+
+.card .card-image {
+    height: 60%;
+    position: relative;
+    overflow: hidden;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: -30px;
+    border-radius: 6px;
+    box-shadow: 0 16px 38px -12px rgba(0, 0, 0, 0.1), 0 4px 25px 0px rgba(0, 0, 0, 0.1), 0 8px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+.card .card-image .card-caption {
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    pointer-events: none;
+}
+
+.card img {
+    width: 100%;
+    height: 200px;
+}
+
+.card-description{
+    min-height: 100px;
+}
+
+.div-btn-know{
+    height: 100px;
+    z-index: 1;
+}
+
+.btn-know {
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 50px 13px;
+    outline: 0;
+    border: 1px solid black;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.btn-know::after {
+    content: "";
+    background-color: #dc3545;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 5px;
+    left: 5px;
+    transition: 0.2s;
+    border-radius: 15px;
+    z-index: -1;
+}
+
+.btn-know:hover::after{
+    top: 0;
+    left: 0;
+}
+
+
+/* CSS create.blade.php*/
+
+#event-create-container {
+    max-width: 50%;
+}
+
+
+/* CSS show.blade.php*/
+
+#event-show-container {
+    max-width: 80%;
+}
+
+.show-container-image {
+    height: 350px;
+}
+
+ion-icon {
+    font-size: 24px;
+    color: #000;
+    margin-right: 10px;
+}
+
+.show-list-event {
+    list-style: none;
+    font-size: 18px;
+    margin-left: 15px;
+}
+
+.btn-confirm {
+    font-size: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 50px 13px;
+    outline: 0;
+    border: 1px solid black;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-weight: 500;
+}
+
+.btn-confirm::after {
+    content: "";
+    background-color: #1bbdae;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+    height: 100%;
+    top: 5px;
+    left: 5px;
+    transition: 0.2s;
+    border-radius: 15px;
+}
+
+.btn-confirm:hover::after {
+    top: 0;
+    left: 0;
+}
+
+.btn-confirmed {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    padding: 13px 50px 13px;
+    outline: 0;
+    border: 1px solid black;
+    border-radius: 15px;
+    cursor: default !important;
+    position: relative;
+    background-color: #1bbdae;
+    color: white;
+}
+
+.checkmark-sharp {
+    color: #1bbdae !important;
+}
+
+.show-list-event-items {
+    list-style: none;
+    font-size: 18px;
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+.hr-div {
+    border-left: 1px solid #c8c9ca;
+}
+
+/* CSS contact.blade.php*/
