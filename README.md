@@ -33,12 +33,12 @@ composer --version
 
 ## 🔧 Instalação
 
-Siga o passo a passo abaixo para ter o ambiente rodando localmente.
+Siga o passo a passo abaixo **na ordem correta** para ter o ambiente rodando localmente.
 
 **1. Clone o repositório:**
 
 ```bash
-git clone https://github.com/LeoniZilli/events-laravel.git
+git clone https://github.com/seu-usuario/events-laravel.git
 cd events-laravel
 ```
 
@@ -54,31 +54,56 @@ composer install --ignore-platform-reqs
 cp .env.example .env
 ```
 
-**4. Suba os containers Docker:**
+**4. Configure o banco de dados no `.env`:**
+
+Abra o arquivo `.env` e confirme que as variáveis do banco estão assim:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=sail
+DB_PASSWORD=password
+```
+
+> ⚠️ O `DB_HOST` deve ser `mysql` (nome do container), **nunca** `127.0.0.1` ou `localhost` — isso causaria erro de conexão.
+
+**5. Suba os containers Docker:**
 
 ```bash
 ./vendor/bin/sail up -d
 ```
 
-**5. Gere a chave da aplicação:**
+> ⏳ Aguarde alguns segundos após esse comando para o MySQL terminar de inicializar antes de continuar.
+
+**6. Verifique se todos os containers estão rodando:**
+
+```bash
+./vendor/bin/sail ps
+```
+
+Todos devem aparecer com status **Up** antes de prosseguir.
+
+**7. Gere a chave da aplicação:**
 
 ```bash
 ./vendor/bin/sail artisan key:generate
 ```
 
-**6. Rode as migrations para criar as tabelas no banco:**
+**8. Rode as migrations para criar as tabelas no banco:**
 
 ```bash
 ./vendor/bin/sail artisan migrate
 ```
 
-**7. Instale as dependências do frontend:**
+**9. Instale as dependências do frontend:**
 
 ```bash
 ./vendor/bin/sail npm install
 ```
 
-**8. Inicie o servidor de desenvolvimento do frontend:**
+**10. Inicie o servidor de desenvolvimento do frontend:**
 
 ```bash
 ./vendor/bin/sail npm run dev -- --host
@@ -91,6 +116,41 @@ http://localhost
 ```
 
 > ⚠️ Mantenha o terminal com o Vite rodando aberto. Ele é necessário para carregar estilos e scripts em ambiente de desenvolvimento.
+
+---
+
+## 🗄️ Configuração do banco de dados
+
+O projeto usa **MySQL via Docker**, gerenciado pelo Laravel Sail. As configurações já vêm preenchidas no `.env.example`, mas confirme que o seu `.env` contém os seguintes valores:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=sail
+DB_PASSWORD=password
+```
+
+> ⚠️ O valor de `DB_HOST` deve ser `mysql` (nome do container Docker), e **não** `127.0.0.1` ou `localhost`. Usar o endereço local causará erro de conexão com o banco.
+
+Após confirmar as variáveis, rode as migrations para criar todas as tabelas:
+
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+Se precisar recriar o banco do zero (apaga todos os dados):
+
+```bash
+./vendor/bin/sail artisan migrate:fresh
+```
+
+Para visualizar as tabelas criadas via terminal:
+
+```bash
+./vendor/bin/sail artisan db:show
+```
 
 ---
 
@@ -181,13 +241,13 @@ Contribuições são bem-vindas! Para contribuir:
 
 ## 📌 Versão
 
-Usamos [SemVer](http://semver.org/) para controle de versão. Para as versões disponíveis, veja as [tags neste repositório](https://github.com/LeoniZilli/events-laravel/tags).
+Usamos [SemVer](http://semver.org/) para controle de versão. Para as versões disponíveis, veja as [tags neste repositório](https://github.com/seu-usuario/events-laravel/tags).
 
 ---
 
 ## ✒️ Autor
 
-* **Leoni Zilli** — Desenvolvimento — [GitHub](https://github.com/LeoniZilli)
+* **Leoni Zilli** — Desenvolvimento — [GitHub](https://github.com/seu-usuario)
 
 ---
 
