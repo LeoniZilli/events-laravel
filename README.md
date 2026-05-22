@@ -1,65 +1,208 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎟️ Events Laravel
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema web para gerenciamento e participação em eventos. A plataforma permite que usuários criem seus próprios eventos, se inscrevam em eventos de outras pessoas, acompanhem suas participações e cancelem inscrições quando necessário — tudo em um ambiente simples, autenticado e organizado.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Começando
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> O projeto utiliza **Laravel Sail** (Docker), portanto não é necessário instalar PHP, MySQL ou Node.js diretamente na sua máquina.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 📋 Pré-requisitos
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Antes de começar, você precisa ter instalado:
 
-## Laravel Sponsors
+- **WSL2** com Ubuntu (para usuários Windows)
+- **Docker Desktop** — [https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop)
+- **Git** — [https://git-scm.com](https://git-scm.com)
+- **Composer** — [https://getcomposer.org](https://getcomposer.org)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Verifique se estão instalados corretamente:
 
-### Premium Partners
+```bash
+docker --version
+git --version
+composer --version
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+---
 
-## Contributing
+## 🔧 Instalação
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Siga o passo a passo abaixo para ter o ambiente rodando localmente.
 
-## Code of Conduct
+**1. Clone o repositório:**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone https://github.com/LeoniZilli/events-laravel.git
+cd events-laravel
+```
 
-## Security Vulnerabilities
+**2. Instale as dependências PHP:**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer install --ignore-platform-reqs
+```
 
-## License
+**3. Copie o arquivo de ambiente:**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# projectLaravel
+```bash
+cp .env.example .env
+```
+
+**4. Suba os containers Docker:**
+
+```bash
+./vendor/bin/sail up -d
+```
+
+**5. Gere a chave da aplicação:**
+
+```bash
+./vendor/bin/sail artisan key:generate
+```
+
+**6. Rode as migrations para criar as tabelas no banco:**
+
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+**7. Instale as dependências do frontend:**
+
+```bash
+./vendor/bin/sail npm install
+```
+
+**8. Inicie o servidor de desenvolvimento do frontend:**
+
+```bash
+./vendor/bin/sail npm run dev -- --host
+```
+
+Após esses passos, acesse a aplicação em:
+
+```
+http://localhost
+```
+
+> ⚠️ Mantenha o terminal com o Vite rodando aberto. Ele é necessário para carregar estilos e scripts em ambiente de desenvolvimento.
+
+---
+
+## ⚙️ Executando os testes
+
+Para rodar os testes automatizados do projeto:
+
+```bash
+./vendor/bin/sail artisan test
+```
+
+### 🔩 Testes de funcionalidade (Feature Tests)
+
+Verificam os fluxos principais da aplicação, como autenticação, criação de eventos e inscrições.
+
+```bash
+./vendor/bin/sail artisan test --testsuite=Feature
+```
+
+### ⌨️ Testes unitários (Unit Tests)
+
+Verificam o comportamento isolado de classes e métodos do sistema.
+
+```bash
+./vendor/bin/sail artisan test --testsuite=Unit
+```
+
+---
+
+## 📦 Implantação
+
+Para implantar o projeto em um servidor de produção:
+
+**1.** Configure as variáveis de ambiente no `.env` do servidor (banco de dados, `APP_ENV=production`, `APP_DEBUG=false`)
+
+**2.** Instale as dependências sem pacotes de desenvolvimento:
+
+```bash
+composer install --no-dev --optimize-autoloader
+```
+
+**3.** Gere o build do frontend:
+
+```bash
+npm run build
+```
+
+**4.** Rode as migrations:
+
+```bash
+php artisan migrate --force
+```
+
+**5.** Otimize a aplicação:
+
+```bash
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+```
+
+---
+
+## 🛠️ Construído com
+
+* [Laravel 9](https://laravel.com) — Framework PHP principal
+* [Laravel Sail](https://laravel.com/docs/sail) — Ambiente de desenvolvimento via Docker
+* [Jetstream](https://jetstream.laravel.com) — Autenticação, perfil e gerenciamento de sessão
+* [Livewire](https://laravel-livewire.com) — Componentes reativos server-side
+* [Tailwind CSS](https://tailwindcss.com) — Estilização do frontend
+* [Vite](https://vitejs.dev) — Build e hot reload do frontend
+* [MySQL](https://www.mysql.com) — Banco de dados relacional
+* [Docker](https://www.docker.com) — Containerização do ambiente
+
+---
+
+## 🖇️ Colaborando
+
+Contribuições são bem-vindas! Para contribuir:
+
+1. Faça um **fork** do projeto
+2. Crie uma branch para sua feature: `git checkout -b feature/minha-feature`
+3. Commit suas alterações: `git commit -m 'feat: adiciona minha feature'`
+4. Faça o push para a branch: `git push origin feature/minha-feature`
+5. Abra um **Pull Request**
+
+---
+
+## 📌 Versão
+
+Usamos [SemVer](http://semver.org/) para controle de versão. Para as versões disponíveis, veja as [tags neste repositório](https://github.com/LeoniZilli/events-laravel/tags).
+
+---
+
+## ✒️ Autor
+
+* **Leoni Zilli** — Desenvolvimento — [GitHub](https://github.com/LeoniZilli)
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT — veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+---
+
+## 🎁 Expressões de gratidão
+
+* Conta pra alguém sobre esse projeto 📢
+* Deixa uma ⭐ no repositório se te ajudou
+* Um agradecimento publicamente 🫂
+
+---
+
+⌨️ com ❤️ por **Leoni Zilli** 😊
