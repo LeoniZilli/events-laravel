@@ -119,41 +119,6 @@ http://localhost
 
 ---
 
-## 🗄️ Configuração do banco de dados
-
-O projeto usa **MySQL via Docker**, gerenciado pelo Laravel Sail. As configurações já vêm preenchidas no `.env.example`, mas confirme que o seu `.env` contém os seguintes valores:
-
-```env
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=laravel
-DB_USERNAME=sail
-DB_PASSWORD=password
-```
-
-> ⚠️ O valor de `DB_HOST` deve ser `mysql` (nome do container Docker), e **não** `127.0.0.1` ou `localhost`. Usar o endereço local causará erro de conexão com o banco.
-
-Após confirmar as variáveis, rode as migrations para criar todas as tabelas:
-
-```bash
-./vendor/bin/sail artisan migrate
-```
-
-Se precisar recriar o banco do zero (apaga todos os dados):
-
-```bash
-./vendor/bin/sail artisan migrate:fresh
-```
-
-Para visualizar as tabelas criadas via terminal:
-
-```bash
-./vendor/bin/sail artisan db:show
-```
-
----
-
 ## ⚙️ Executando os testes
 
 Para rodar os testes automatizados do projeto:
